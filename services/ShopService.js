@@ -13,6 +13,7 @@ const getShopList = (req, res, next) => {
       const products = JSON.parse(data);
       return res.render("shop/shop", {
         pageTitle: "Shop Page",
+        logoImg: "assets/jam-logo.png",
         products: products,
         imgUrl: "assets/online-shop.jpeg",
       });
