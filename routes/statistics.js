@@ -1,10 +1,10 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
 router.get("/statistics", (req, res) => {
   res.render("statistics/statistics", {
     pageTitle: "Statistics",
-    path: "/statistics/statistics"
+    path: "/statistics/statistics",
   });
 });
 
