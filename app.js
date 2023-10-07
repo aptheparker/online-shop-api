@@ -8,6 +8,8 @@ const statisticsControllers = require('./controllers/StatisticsController');
 app.set("view engine", "ejs");
 app.set("views", "views");
 
+app.use(express.static(__dirname + '/public'));
+
 app.use(userControllers);
 app.use('/admin', adminControllers);
 app.use('/statistics', statisticsControllers);
