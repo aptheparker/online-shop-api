@@ -8,8 +8,11 @@ router.get("/records", (req, res) => {
   });
 });
 
-router.get("/add-record", (req, res) => {
-  res.render("admin/add-record");
+router.post("/add-record", (req, res) => {
+  res.render("admin/add-record", {
+    pageTitle: "Add Admin Records",
+    path: "/admin/add-record"
+  });
 })
 
-module.exports = router;
+module.exports = router;  

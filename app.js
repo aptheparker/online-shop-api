@@ -1,16 +1,16 @@
 const express = require("express");
 const app = express();
 
+const userControllers = require('./controllers/UserController');
+const adminControllers = require('./controllers/AdminController');
+const statisticsControllers = require('./controllers/StatisticsController');
+
 app.set("view engine", "ejs");
 app.set("views", "views");
 
-const userRoutes = require('./routes/user');
-const adminRoutes = require('./routes/admin');
-const statisticsRoutes = require('./routes/statistics');
-
-app.use(userRoutes);
-app.use('/admin', adminRoutes);
-app.use('/statistics', statisticsRoutes);
+app.use(userControllers);
+app.use('/admin', adminControllers);
+app.use('/statistics', statisticsControllers);
 
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
