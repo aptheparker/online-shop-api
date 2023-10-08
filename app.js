@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const path = require('path');
 
 const userControllers = require('./controllers/UserController');
 const adminControllers = require('./controllers/AdminController');
@@ -8,7 +9,7 @@ const statisticsControllers = require('./controllers/StatisticsController');
 app.set("view engine", "ejs");
 app.set("views", "views");
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(userControllers);
 app.use('/admin', adminControllers);
