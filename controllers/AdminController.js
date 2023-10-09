@@ -1,18 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-router.get("/records", (req, res) => {
-  res.render("admin/records", {
-    pageTitle: "Admin Records",
-    path: "/admin/records"
-  });
-});
+const adminService = require('../services/AdminService');
 
-router.post("/add-record", (req, res) => {
-  res.render("admin/add-record", {
-    pageTitle: "Add Admin Records",
-    path: "/admin/add-record"
-  });
-})
+router.get("/records", adminService.getRecordsFromFile);
+router.post("/add-record", adminService.postRecordsToFile);
 
 module.exports = router;  

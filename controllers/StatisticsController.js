@@ -1,11 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.render("statistics/statistics", {
-    pageTitle: "Statistics",
-    path: "/statistics/statistics",
-  });
-});
+const StatisticsService = require("../services/StatisticsService");
+
+router.get("/", StatisticsService.getStatsFromFile);
 
 module.exports = router;
