@@ -1,0 +1,13 @@
+<html>
+<head>
+    <title>Shop</title>
+</head>
+<body>
+    <h1><%= pageTitle %></h1>
+    <hr>
+    <% for (let p of products) { %>
+        <h2><%= p.productName %></h2>
+        <p><%= p.productPrice %></p>
+    <% } %>
+</body>
+</html>

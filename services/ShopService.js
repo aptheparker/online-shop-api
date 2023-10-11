@@ -1,20 +1,29 @@
 const fs = require("fs");
 const path = require("path");
 
-const dataFilePath = path.join("data", "records.json");
+const dataFilePath = path.join("data", "products.json");
 
 const getShopList = (req, res, next) => {
-  return  res.render("shop/shop", {
-    pageTitle: "Shop List",
-    path: "shop",
+  fs.readFile(dataFilePath, (err, data) => {
+    if (err) {
+      console.log(err);
+      return res.redirect("/");
+    } else {
+      const products = JSON.parse(data);
+      return res.render("shop/shop", {
+        pageTitle: "Shop List",
+        path: "shop",
+        products: products,
+      });
+    }
   });
 };
 
 const getShopItem = (req, res, next) => {
-  return
-}
+  return;
+};
 
 module.exports = {
   getShopList,
-  getShopItem
+  getShopItem,
 };
