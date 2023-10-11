@@ -8,6 +8,7 @@
     <% for (let p of products) { %>
         <h2><%= p.productName %></h2>
         <p><%= p.productPrice %></p>
+        <a href="/shop/<%= p.id %>">View Details</a>
     <% } %>
 </body>
 </html>
