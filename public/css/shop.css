@@ -1,0 +1,29 @@
+.online-shop-img{
+  width: 30vw;
+  height: 30vh;
+  margin: 0 auto;
+}
+
+.category-navbar{
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.category-navbar ul{
+  list-style: none;
+  display: flex;
+}
+
+.category-navbar ul li{
+  margin: 0 30px;
+}
+
+.category-navbar ul li a{
+  text-decoration: none;
+  color: grey;
+  font-size: 18px;
+}

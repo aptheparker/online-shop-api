@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
+
 const dataFilePath = path.join("data", "products.json");
 
 const getShopList = (req, res, next) => {
@@ -13,6 +14,7 @@ const getShopList = (req, res, next) => {
       return res.render("shop/shop", {
         pageTitle: "Shop Page",
         products: products,
+        imgUrl: "assets/online-shop.jpeg",
       });
     }
   });
