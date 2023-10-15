@@ -6,11 +6,11 @@
 
 .navbar{
   width: 100%;
-  height: 50px;
+  height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px;
+  padding: 20px;
   position: fixed;
 }
 
@@ -23,7 +23,13 @@
   margin: 0 10px;
 }
 
+.navbar ul li a{
+  text-decoration: none;
+  color: grey;
+  font-size: 18px;
+}
+
 main{
   padding: 20px;
-  padding-top: 50px;
+  padding-top: 80px;
 }
