@@ -2,9 +2,11 @@ const express = require("express");
 const app = express();
 const path = require('path');
 
+const mainController = require('./controllers/MainController');
 const shopController = require('./controllers/ShopController');
 const cartController = require('./controllers/CartController');
 
+app.use('/', mainController);
 app.use('/shop', shopController);
 app.use('/cart', cartController);
 
