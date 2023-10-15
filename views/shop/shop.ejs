@@ -8,11 +8,6 @@
     <%- include('../partials/navbar') %>
 
     <main>
-      <img
-        src="<%= imgUrl %>"
-        alt="online-shop image"
-        class="online-shop-img"
-      />
       <nav class="category-navbar">
         <ul>
           <li><a href="/">All</a></li>
@@ -22,11 +17,20 @@
         </ul>
         <div class="search">Search: <input type="text" /></div>
       </nav>
-      <% for (let p of products) { %>
-      <h2><%= p.productName %></h2>
-      <p><%= p.productPrice %></p>
-      <a href="/shop/<%= p.id %>">View Details</a>
-      <% } %>
+      <div class="products">
+        <% for (let p of products) { %>
+        <div class="product-box">
+          <img
+            src="<%= p.productImg %>"
+            alt="<%= p.productName %>"
+            class="product-img"
+          />
+          <h2><%= p.productName %></h2>
+          <p>₩ <%= p.productPrice %></p>
+          <a href="/shop/<%= p.id %>">View Details</a>
+        </div>
+        <% } %>
+      </div>
     </main>
   </body>
 </html>

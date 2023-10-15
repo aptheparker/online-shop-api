@@ -1,16 +1,9 @@
-.online-shop-img{
-  width: 30vw;
-  height: 30vh;
-  margin: 0 auto;
-}
-
 .category-navbar{
   width: 100%;
   height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
 }
 
 .category-navbar ul{
@@ -43,4 +36,25 @@
   border-radius: 5px;
   border: 1px solid grey;
   padding: 5px;
+}
+
+.products{
+  height: 80%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 50px;
+}
+
+.product-box{
+  width: 100%;
+  height: 430px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-img{
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
 }
