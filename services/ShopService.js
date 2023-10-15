@@ -12,7 +12,6 @@ const getShopList = (req, res, next) => {
       const products = JSON.parse(data);
       return res.render("shop/shop", {
         pageTitle: "Shop Page",
-        shopName: "CoMit",
         products: products,
       });
     }
