@@ -2,13 +2,17 @@
   <head>
     <title><%= pageTitle %></title>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/shop.css">
+    <link rel="stylesheet" href="css/shop.css" />
   </head>
   <body>
     <%- include('../partials/navbar') %>
 
     <main>
-      <img src="<%= imgUrl %>" alt="online-shop image" class="online-shop-img">
+      <img
+        src="<%= imgUrl %>"
+        alt="online-shop image"
+        class="online-shop-img"
+      />
       <nav class="category-navbar">
         <ul>
           <li><a href="/">All</a></li>
@@ -16,6 +20,7 @@
           <li><a href="/">Category 2</a></li>
           <li><a href="/">Category 3</a></li>
         </ul>
+        <div class="search">Search: <input type="text" /></div>
       </nav>
       <% for (let p of products) { %>
       <h2><%= p.productName %></h2>

@@ -24,6 +24,23 @@
 
 .category-navbar ul li a{
   text-decoration: none;
-  color: grey;
   font-size: 18px;
+  color: grey;
+}
+
+.search {
+  width: 300px;
+  font-size: 18px;
+  color: grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search input{
+  width: 220px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  padding: 5px;
 }
