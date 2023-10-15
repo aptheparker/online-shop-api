@@ -1,26 +1,29 @@
 const getCartList = async (req, res) => {
-  return }
+  return res.render("cart/cart", {
+    pageTitle: "Cart Page",
+  });
+};
 
 const getCartItem = async (req, res) => {
-  return
-}
+  return;
+};
 
 const addCartItem = async (req, res) => {
-  return
-}
+  return;
+};
 
 const deleteCartItem = async (req, res) => {
-  return
-} 
+  return;
+};
 
 const updateCartItem = async (req, res) => {
-  return
-}
+  return;
+};
 
 module.exports = {
   getCartList,
   getCartItem,
   addCartItem,
   deleteCartItem,
-  updateCartItem
+  updateCartItem,
 };
