@@ -11,7 +11,8 @@ const getShopList = (req, res, next) => {
     } else {
       const products = JSON.parse(data);
       return res.render("shop/shop", {
-        pageTitle: "Shop List",
+        pageTitle: "Shop Page",
+        shopName: "CoMit",
         products: products,
       });
     }
@@ -29,7 +30,6 @@ const getShopItem = (req, res, next) => {
       const product = products.find((p) => p.id === req.params.id);
       return res.render("shop/shop-detail", {
         pageTitle: product.title,
-        path: "shop/shop-detail",
         product: product,
       });
     }

@@ -1,15 +1,23 @@
 <html>
-<head>
+  <head>
     <title>Shop</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-    <h1><%= pageTitle %></h1>
-    <hr>
-    <% for (let p of products) { %>
-        <h2><%= p.productName %></h2>
-        <p><%= p.productPrice %></p>
-        <a href="/shop/<%= p.id %>">View Details</a>
-    <% } %>
-</body>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <h1><%= shopName %></h1>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/cart"></a>Cart</li>
+      </ul>
+    </nav>
+    <main>
+      <% for (let p of products) { %>
+      <h2><%= p.productName %></h2>
+      <p><%= p.productPrice %></p>
+      <a href="/shop/<%= p.id %>">View Details</a>
+      <% } %>
+    </main>
+  </body>
 </html>

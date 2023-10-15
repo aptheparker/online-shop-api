@@ -4,16 +4,26 @@
   box-sizing: border-box;
 }
 
-header{
+.navbar{
   width: 100%;
-  height: auto;
-  padding: 20px;
-  font-size: 24px;
-  border: 1px solid #ccc;
-  display: flex;  
-  justify-content: center;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  position: fixed;
+}
+
+.navbar ul{
+  list-style: none;
+  display: flex;
+}
+
+.navbar ul li{
+  margin: 0 10px;
 }
 
 main{
   padding: 20px;
+  padding-top: 50px;
 }
