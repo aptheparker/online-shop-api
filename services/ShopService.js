@@ -4,7 +4,7 @@ const path = require("path");
 
 const dataFilePath = path.join("data", "products.json");
 
-const getShopList = (req, res, next) => {
+const getShopPage = (req, res, next) => {
   fs.readFile(dataFilePath, (err, data) => {
     if (err) {
       console.log(err);
@@ -39,6 +39,6 @@ const getShopItem = (req, res, next) => {
 };
 
 module.exports = {
-  getShopList,
+  getShopPage,
   getShopItem,
 };

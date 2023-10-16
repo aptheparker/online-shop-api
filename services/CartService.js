@@ -1,4 +1,4 @@
-const getCartList = async (req, res) => {
+const getCartPage = async (req, res) => {
   return res.render("cart/cart", {
     pageTitle: "Cart Page",
     logoImg: "assets/jam-logo.png",
@@ -22,7 +22,7 @@ const updateCartItem = async (req, res) => {
 };
 
 module.exports = {
-  getCartList,
+  getCartPage,
   getCartItem,
   addCartItem,
   deleteCartItem,
