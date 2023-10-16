@@ -6,6 +6,9 @@ const mainController = require('./controllers/MainController');
 const shopController = require('./controllers/ShopController');
 const cartController = require('./controllers/CartController');
 
+app.use(express.json()); // This middleware will parse JSON data from request bodies
+app.use(express.urlencoded({ extended: true }));
+
 app.use('/', mainController);
 app.use('/shop', shopController);
 app.use('/cart', cartController);

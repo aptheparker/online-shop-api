@@ -6,7 +6,27 @@
   <body>
     <%- include('../partials/navbar') %>
     <main>
-      Cart Page
+      <div class="products">
+        <% for (let p of products) { %>
+        <form method="POST" action="/cart/delete/<%= p.id %>">
+          <input type="hidden" name="_method" value="DELETE" />
+
+          <div class="product-box">
+            <img
+              src="<%= p.productImg %>"
+              alt="<%= p.productName %>"
+              class="product-img"
+            />
+            <h2><%= p.productName %></h2>
+            <p>₩ <%= p.productPrice %></p>
+            <button type="submit" class="add-to-cart-btn">
+              Delete from Cart
+            </button>
+            <a href="/cart/<%= p.id %>">View Details</a>
+          </div>
+        </form>
+        <% } %>
+      </div>
     </main>
   </body>
 </html>

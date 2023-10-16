@@ -55,3 +55,7 @@
   height: 350px;
   object-fit: cover;
 }
+
+.add-to-cart-btn{
+  width: 30%;
+}

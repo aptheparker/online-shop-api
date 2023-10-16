@@ -19,16 +19,24 @@
       </nav>
       <div class="products">
         <% for (let p of products) { %>
-        <div class="product-box">
-          <img
-            src="<%= p.productImg %>"
-            alt="<%= p.productName %>"
-            class="product-img"
-          />
-          <h2><%= p.productName %></h2>
-          <p>₩ <%= p.productPrice %></p>
-          <a href="/shop/<%= p.id %>">View Details</a>
-        </div>
+        <form action="/cart/" method="POST">
+          <div class="product-box">
+            <img
+              src="<%= p.productImg %>"
+              alt="<%= p.productName %>"
+              class="product-img"
+            />
+            <h2><%= p.productName %></h2>
+            <p>₩ <%= p.productPrice %></p>
+            <input
+              type="hidden"
+              name="product"
+              value="<%= JSON.stringify(p) %>"
+            />
+            <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+            <a href="/shop/<%= p.id %>">View Details</a>
+          </div>
+        </form>
         <% } %>
       </div>
     </main>
