@@ -14,16 +14,21 @@ const addCartItem = async (req, res) => {
   const { product } = req.body;
   const productInJson = JSON.parse(product);
 
-  if (products.includes(productInJson)) {
-    productInJson.productQuantity += 1;
-  } else if (productInJson) {
+  console.log(products.find((product) => product.id === productInJson.id));
+
+  if (productInJson && products.find((product) => product.id === productInJson.id)) { // If product already exists in cart, increment quantity
+    const index = products.findIndex(
+      (product) => product.id === productInJson.id
+    );
+    products[index].productQuantity++;
+    res.redirect("/cart");
+  } else if (productInJson) { // If product does not exist in cart, add it
     productInJson.productQuantity = 1;
     products.push(productInJson);
-  } else {
+    res.redirect("/cart");
+  } else { // If product does not exist in request body, send error
     res.status(400).send("Bad Request: Missing product data");
   }
-  res.redirect("/cart");
-  console.log(products);
 };
 
 const updateCartItem = async (req, res) => {
