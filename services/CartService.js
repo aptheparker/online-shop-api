@@ -8,21 +8,22 @@ const getCartPage = async (req, res) => {
   });
 };
 
-const getCartItem = async (req, res) => {
-  
-};
+const getCartItem = async (req, res) => {};
 
 const addCartItem = async (req, res) => {
   const { product } = req.body;
+  const productInJson = JSON.parse(product);
 
-  if (product) { // if product is added, then the product list will be updated.
-    const productObject = JSON.parse(product);
-    products.push(productObject);
-    
-    res.redirect("/cart");
+  if (products.includes(productInJson)) {
+    productInJson.productQuantity += 1;
+  } else if (productInJson) {
+    productInJson.productQuantity = 1;
+    products.push(productInJson);
   } else {
     res.status(400).send("Bad Request: Missing product data");
   }
+  res.redirect("/cart");
+  console.log(products);
 };
 
 const updateCartItem = async (req, res) => {
@@ -44,7 +45,6 @@ const deleteCartItem = async (req, res) => {
     res.status(400).send("Bad Request: Missing product data");
   }
 };
-
 
 module.exports = {
   getCartPage,

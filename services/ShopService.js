@@ -21,7 +21,7 @@ const getShopPage = (req, res, next) => {
   });
 };
 
-// router.get("/:id", ShopService.getShopItem);
+
 const getShopItem = (req, res, next) => {
   fs.readFile(dataFilePath, (err, data) => {
     if (err) {
