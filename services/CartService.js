@@ -24,7 +24,7 @@ const addCartItem = async (req, res) => {
     res.redirect("/cart");
   } else if (productInJson) { // If product does not exist in cart, add it
     productInJson.productQuantity = 1;
-    products.push(productInJson);
+    products.push({...productInJson, productQuantity: 1});
     res.redirect("/cart");
   } else { // If product does not exist in request body, send error
     res.status(400).send("Bad Request: Missing product data");
