@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color:rgb(247, 243, 236);
 }
 
 .logo-img{
@@ -13,7 +14,6 @@
 .navbar {
   width: 100%;
   height: 80px;
-  background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -24,13 +24,13 @@
     "id": "4",
     "productImg": "assets/online-shop.jpeg",
     "productName": "notebook",
-    "productPrice": "20,000",
+    "productPrice": "8,000",
     "productDescription": "This is a notebook"
   },
   {
     "id": "5",
     "productImg": "assets/online-shop.jpeg",
-    "productName": "notebook",
+    "productName": "taegon",
     "productPrice": "20,000",
     "productDescription": "This is a notebook"
   },
