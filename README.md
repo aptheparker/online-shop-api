@@ -1,7 +1,5 @@
-<h1> Online Shop API </h1> 
-
-
-# Tech Stack
+# Online Shop API
+## Tech Stack
 - Backend
   - Node.js
 - Database
