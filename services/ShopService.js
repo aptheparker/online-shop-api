@@ -1,9 +1,3 @@
-const fs = require("fs");
-const path = require("path");
-
-
-const dataFilePath = path.join("data", "products.json");
-
 const getShopPage = (req, res, next) => {
   fs.readFile(dataFilePath, (err, data) => {
     if (err) {

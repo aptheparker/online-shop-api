@@ -4,6 +4,7 @@ const path = require('path');
 const { sequelize } = require('./models/index'); // 시퀄라이즈
 
 const mainController = require('./controllers/MainController');
+const userController = require('./controllers/UserController');
 const shopController = require('./controllers/ShopController');
 const cartController = require('./controllers/CartController');
 
@@ -13,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use('/', mainController);
+app.use('/user', userController);
 app.use('/shop', shopController);
 app.use('/cart', cartController);
 
