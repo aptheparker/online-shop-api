@@ -3,7 +3,7 @@ const router = express.Router();
 
 const UserService = require("../services/UserService");
 
-// router.get("/", ShopService.getShopPage);
-// router.get("/:id", ShopService.getShopItem);
+// router.get("/", UserService);
+// router.get("/", ShopService.getShopItem);
 
 module.exports = router;
