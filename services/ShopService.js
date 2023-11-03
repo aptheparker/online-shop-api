@@ -7,7 +7,6 @@ const dataFilePath = path.join("data", "products.json");
 const getShopPage = (req, res, next) => {
   fs.readFile(dataFilePath, (err, data) => {
     if (err) {
-      console.log(err);
       return res.redirect("/");
     } else {
       const products = JSON.parse(data);
