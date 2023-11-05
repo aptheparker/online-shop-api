@@ -14,8 +14,6 @@ const addCartItem = async (req, res) => {
   const { product } = req.body;
   const productInJson = JSON.parse(product);
 
-  console.log(products.find((product) => product.id === productInJson.id));
-
   if (productInJson && products.find((product) => product.id === productInJson.id)) { // If product already exists in cart, increment quantity
     const index = products.findIndex(
       (product) => product.id === productInJson.id
