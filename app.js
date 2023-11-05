@@ -16,12 +16,10 @@ const { sequelize } = require('./models/index');
 // routes
 const mainRoute = require('./routes/MainRoute');
 const authRoute = require('./routes/AuthRoute');
-const userRoute = require('./routes/UserRoute');
 const shopRoute = require('./routes/ShopRoute');
 const cartRoute = require('./routes/CartRoute');
 app.use('/', mainRoute);
 app.use('/auth', authRoute);
-app.use('/user', userRoute);
 app.use('/shop', shopRoute);
 app.use('/cart', cartRoute);
 
