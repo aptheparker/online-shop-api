@@ -1,8 +1,10 @@
-const express = require("express");
-const router = express.Router();
+const getMainPage = (req, res) => {
+  res.render("main", {
+    pageTitle: "Main Page",
+    logoImg: "assets/jam-logo.png",
+  });
+}
 
-const MainService = require("../services/MainService");
-
-router.get("/", MainService.getMainPage);
-
-module.exports = router;
+module.exports = {
+  getMainPage,
+};

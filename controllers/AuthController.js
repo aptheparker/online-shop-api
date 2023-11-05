@@ -1,9 +1,29 @@
-const express = require("express");
-const router = express.Router();
+const signup = async (req, res, next) => {
+  // const { name, email, password } = req.body;
 
-const AuthService = require("../services/AuthService");
+  const name = '123'
+  const email = '123'
+  const password = '123'
 
-router.post("/signup", AuthService.signup);
-router.post("/signin", AuthService.signin);
+  await User.create({ name, email, password })
+};
 
-module.exports = router;
+const signin = async (req, res, next) => {
+  // const { email, password } = req.body;
+
+  const email = '123'
+  const password = '123'
+
+  const user = await User.findOne({ where: { email } });
+
+  if(user){
+    // go to main page
+  }
+
+
+}
+
+module.exports = {
+  signup,
+  signin
+};
