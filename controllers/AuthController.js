@@ -18,6 +18,8 @@ exports.postSignIn = async (req, res, next) => {
     console.log("user not found");
     return res.redirect("/auth/sign-in");
   }
+
+  res.redirect("/");
 };
 
 exports.getSignUp = (req, res, next) => {
