@@ -2,11 +2,14 @@
   <head>
     <title><%= pageTitle %></title>
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/auth.css">
   </head>
   <body>
     <%- include('../partials/navbar') %>
     <main>
+      <h1><%= error %></h1>
       <form action="/auth/sign-in" method="post">
+        <h1>Sign In</h1>
         <label for="username">Username:</label>
         <input type="text" name="username" />
 
@@ -14,8 +17,7 @@
         <input type="password" name="password" />
         <button>Sign In</button>
       </form>
-      <h1>Sign Up</h1>
-      <button><a href="/auth/sign-up">Sign Up</a></button>
+      <a href="/auth/sign-up"><button>Sign Up</button></a>
     </main>
   </body>
 </html>

@@ -6,8 +6,9 @@
   <body>
     <%- include('partials/navbar') %>
     <main>
-      Main Page
+      <% if(userName){ %>
+      <h1>Hello <%= userName %>!</h1>
+      <% } %> Main Page
     </main>
   </body>
 </html>
-

@@ -4,22 +4,42 @@ exports.getSignIn = (req, res, next) => {
   res.render("auth/sign-in", {
     pageTitle: "SignIn Page",
     logoImg: "/assets/jam-logo.png",
+    error: "",
   });
 };
 
 exports.postSignIn = async (req, res, next) => {
   const { username, password } = req.body;
 
-  const user = await User.findOne({
-    where: { username: username, password: password },
+  const usernameExist = await User.findOne({
+    where: { username: username },
   });
 
-  if (!user) {
-    console.log("user not found");
-    return res.redirect("/auth/sign-in");
+  if (!username || !password) {
+    return res.render("auth/sign-in", {
+      pageTitle: "SignIn Page",
+      logoImg: "/assets/jam-logo.png",
+      error: "username or password is empty",
+    });
+  } else if (!usernameExist) {
+    return res.render("auth/sign-in", {
+      pageTitle: "SignIn Page",
+      logoImg: "/assets/jam-logo.png",
+      error: "username not found",
+    });
+  } else if (usernameExist.password !== password) {
+    return res.render("auth/sign-in", {
+      pageTitle: "SignIn Page",
+      logoImg: "/assets/jam-logo.png",
+      error: "password not matched",
+    });
+  } else {
+    return res.render("main", {
+      pageTitle: "SignIn Page",
+      logoImg: "/assets/jam-logo.png",
+      userName: username,
+    });
   }
-
-  res.redirect("/");
 };
 
 exports.getSignUp = (req, res, next) => {
@@ -32,8 +52,8 @@ exports.getSignUp = (req, res, next) => {
 exports.postSignUp = async (req, res, next) => {
   const { username, password } = req.body;
 
-  const user = await User.findOne({ where: { username: username } });
-  if (user) {
+  const usernameExist = await User.findOne({ where: { username: username } });
+  if (usernameExist) {
     console.log("user already exists");
     return res.redirect("/auth/sign-up");
   }
