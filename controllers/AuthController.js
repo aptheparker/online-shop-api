@@ -35,7 +35,7 @@ exports.postSignIn = async (req, res, next) => {
     });
   } else {
     return res.render("main", {
-      pageTitle: "SignIn Page",
+      pageTitle: "Main Page",
       logoImg: "/assets/jam-logo.png",
       userName: username,
     });
@@ -50,14 +50,34 @@ exports.getSignUp = (req, res, next) => {
 };
 
 exports.postSignUp = async (req, res, next) => {
-  const { username, password } = req.body;
+  const { username, password, passwordConfirm } = req.body;
 
   const usernameExist = await User.findOne({ where: { username: username } });
-  if (usernameExist) {
-    console.log("user already exists");
-    return res.redirect("/auth/sign-up");
-  }
 
-  await User.create({ username: username, password: password });
-  res.redirect("/auth/sign-in");
+  if (!username || !password || !passwordConfirm) {
+    return res.render("auth/sign-up", {
+      pageTitle: "SignUp Page",
+      logoImg: "/assets/jam-logo.png",
+      error: "username or password is empty",
+    });
+  } else if (usernameExist) {
+    return res.render("auth/sign-up", {
+      pageTitle: "SignUp Page",
+      logoImg: "/assets/jam-logo.png",
+      error: "username already exist",
+    });
+  } else if (password !== passwordConfirm) {
+    return res.render("auth/sign-up", {
+      pageTitle: "SignUp Page",
+      logoImg: "/assets/jam-logo.png",
+      error: "password not matched",
+    });
+  } else {
+    await User.create({ username: username, password: password });
+    return res.render("auth/sign-in", {
+      pageTitle: "SignIn Page",
+      logoImg: "/assets/jam-logo.png",
+      error: "",
+    });
+  }
 };
