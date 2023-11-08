@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <%- include('../partials/navbar') %>
+    <main>
+      <form action="/auth/sign-in" method="post">
+        <label for="username">Username:</label>
+        <input type="text" name="username" />
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" />
+        <button>Sign In</button>
+      </form>
+      <h1>Sign Up</h1>
+      <button><a href="/auth/sign-up">Sign Up</a></button>
+    </main>
+  </body>
+</html>

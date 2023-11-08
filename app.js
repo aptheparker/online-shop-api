@@ -10,7 +10,7 @@ app.set("view engine", "ejs");
 app.set("views", "views");
 
 // database
-const { sequelize } = require('./models/index');
+const sequelize = require('./models/index');
 // TODO: models
 
 // routes

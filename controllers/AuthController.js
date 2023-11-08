@@ -1,29 +1,41 @@
-const signup = async (req, res, next) => {
-  // const { name, email, password } = req.body;
+const User = require("../models/User");
 
-  const name = '123'
-  const email = '123'
-  const password = '123'
-
-  await User.create({ name, email, password })
+exports.getSignIn = (req, res, next) => {
+  res.render("auth/sign-in", {
+    pageTitle: "SignIn Page",
+    logoImg: "/assets/jam-logo.png",
+  });
 };
 
-const signin = async (req, res, next) => {
-  // const { email, password } = req.body;
+exports.postSignIn = async (req, res, next) => {
+  const { username, password } = req.body;
 
-  const email = '123'
-  const password = '123'
+  const user = await User.findOne({
+    where: { username: username, password: password },
+  });
 
-  const user = await User.findOne({ where: { email } });
+  if (!user) {
+    console.log("user not found");
+    return res.redirect("/auth/sign-in");
+  }
+};
 
-  if(user){
-    // go to main page
+exports.getSignUp = (req, res, next) => {
+  res.render("auth/sign-up", {
+    pageTitle: "SignUp Page",
+    logoImg: "/assets/jam-logo.png",
+  });
+};
+
+exports.postSignUp = async (req, res, next) => {
+  const { username, password } = req.body;
+
+  const user = await User.findOne({ where: { username: username } });
+  if (user) {
+    console.log("user already exists");
+    return res.redirect("/auth/sign-up");
   }
 
-
-}
-
-module.exports = {
-  signup,
-  signin
+  await User.create({ username: username, password: password });
+  res.redirect("/auth/sign-in");
 };

@@ -1,9 +1,8 @@
 {
   "development": {
-    "username": "root",
-    "password": "25407721119m",
+    "username": "aptheparker",
+    "password": "25407721119a",
     "database": "online-shop",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "host": "localhost",
   }
 }
