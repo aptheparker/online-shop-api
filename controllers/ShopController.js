@@ -1,13 +1,25 @@
+const { Op } = require("sequelize");
 const Product = require("../models/Product");
 
 exports.getShopPage = (req, res, next) => {
   const category = req.query.category;
+  const q = req.query.q;
 
   let productQuery;
   if (category) {
     productQuery = Product.findAll({ where: { category: category } });
   } else {
     productQuery = Product.findAll();
+  }
+
+  if (q) {
+    productQuery = Product.findAll({
+      where: {
+        name: {
+          [Op.like]: `%${q}%`,
+        },
+      },
+    });
   }
 
   productQuery

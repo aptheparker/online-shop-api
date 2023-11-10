@@ -6,7 +6,6 @@
   </head>
   <body>
     <%- include('../partials/navbar') %>
-
     <main>
       <nav class="category-navbar">
         <ul>
@@ -15,7 +14,10 @@
           <li><a href="/shop?category=2">Category 2</a></li>
           <li><a href="/shop?category=3">Category 3</a></li>
         </ul>
-        <div class="search">Search: <input type="text" /></div>
+        <form class="search" method="get">
+          Search: <input type="text" name="q" class="search" />
+          <input type="submit" value="Submit">
+        </form>
       </nav>
       <div class="products">
         <% for (let p of products) { %>
