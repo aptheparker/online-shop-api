@@ -8,12 +8,13 @@ exports.getSignIn = (req, res, next) => {
   });
 };
 
-exports.postSignIn = async (req, res, next) => {
+exports.postSignIn = async (req, res) => {
   const { username, password } = req.body;
 
   const usernameExist = await User.findOne({
     where: { username: username },
   });
+
 
   if (!username || !password) {
     return res.render("auth/sign-in", {
@@ -46,6 +47,7 @@ exports.getSignUp = (req, res, next) => {
   res.render("auth/sign-up", {
     pageTitle: "SignUp Page",
     logoImg: "/assets/jam-logo.png",
+    error: "",
   });
 };
 

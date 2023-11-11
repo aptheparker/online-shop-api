@@ -2,10 +2,10 @@
 
 const fs = require("fs");
 const path = require("path");
-const Sequelize = require("sequelize");
 const process = require("process");
 const env = process.env.NODE_ENV || "development";
 const config = require(__dirname + "/../config/config.json")[env];
+const Sequelize = require("sequelize");
 
 let sequelize;
 if (config.use_env_variable) {
