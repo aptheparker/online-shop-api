@@ -5,9 +5,10 @@
 <body>
     <h1><%= pageTitle %></h1>
     <hr>
-        <h2><%= product.productName %></h2>
-        <p><%= product.productPrice %></p>
-        <p>
-            <% product.productDescription %>
-        </p>
+    <img src="<%= product.imageUrl %>" alt="<%= product.name %>" class="product-img"/>
+    <h2>Product Name: <%= product.name %></h2>
+    <p>Product Price: ₩ <%= product.price %></p>
+    <p>
+        Product Description: <%= product.description %>
+    </p>
 </html>

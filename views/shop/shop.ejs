@@ -10,10 +10,10 @@
     <main>
       <nav class="category-navbar">
         <ul>
-          <li><a href="/">All</a></li>
-          <li><a href="/">Category 1</a></li>
-          <li><a href="/">Category 2</a></li>
-          <li><a href="/">Category 3</a></li>
+          <li><a href="/shop">All</a></li>
+          <li><a href="/shop?category=1">Category 1</a></li>
+          <li><a href="/shop?category=2">Category 2</a></li>
+          <li><a href="/shop?category=3">Category 3</a></li>
         </ul>
         <div class="search">Search: <input type="text" /></div>
       </nav>
@@ -22,12 +22,12 @@
         <form action="/cart/" method="POST">
           <div class="product-box">
             <img
-              src="<%= p.productImg %>"
-              alt="<%= p.productName %>"
+              src="<%= p.imageUrl %>"
+              alt="<%= p.name %>"
               class="product-img"
             />
-            <h2><%= p.productName %></h2>
-            <p>₩ <%= p.productPrice %></p>
+            <h2><%= p.name %></h2>
+            <p>₩ <%= p.price %></p>
             <input
               type="hidden"
               name="product"

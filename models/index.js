@@ -1,4 +1,5 @@
 "use strict";
+// TODO: migration
 
 const Sequelize = require("sequelize");
 const process = require("process");

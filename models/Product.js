@@ -1,30 +1,41 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("./index");
 
-const User = sequelize.define("User", {
+const Product = sequelize.define("Product", {
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
   },
-  username: {
+  name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  password: {
+  price: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  imageUrl: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  description: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  category: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  
 });
 
 sequelize.sync({ force: false })
   .then(() => {
-    console.log("User 테이블 생성 성공");
+    console.log("Product 테이블 생성 성공");
   })
   .catch((err) => {
     console.error(err);
   });
 
-module.exports = User;
+module.exports = Product;
