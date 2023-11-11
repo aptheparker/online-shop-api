@@ -13,17 +13,17 @@
 
           <div class="product-box">
             <img
-              src="<%= p.productImg %>"
-              alt="<%= p.productName %>"
+              src="<%= p.imageUrl %>"
+              alt="<%= p.name %>"
               class="product-img"
             />
-            <h2><%= p.productName %></h2>
-            <p>₩ <%= p.productPrice %></p>
+            <h2><%= p.name %></h2>
+            <p>₩ <%= p.price %></p>
             <p>Quantity: <%= p.productQuantity %></p>
             <button type="submit" class="add-to-cart-btn">
               Delete from Cart
             </button>
-            <a href="/cart/<%= p.id %>">View Details</a>
+            <a href="/shop/<%= p.id %>">View Details</a>
           </div>
         </form>
         <% } %>
