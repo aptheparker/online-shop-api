@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/shop.css" />
+  </head>
+  <body>
+    <%- include('../partials/navbar') %>
+    <main>
+      <nav class="category-navbar">
+        <ul>
+          <li><a href="/shop">All</a></li>
+          <li><a href="/shop?category=1">Category 1</a></li>
+          <li><a href="/shop?category=2">Category 2</a></li>
+          <li><a href="/shop?category=3">Category 3</a></li>
+        </ul>
+        <button class="form-btn"><a href="/admin/add-product">Add Product</a></button>
+        <form class="search-form" method="get">
+          Search: <input type="text" name="q" class="search-bar" />
+          <input type="submit" value="Search" class="form-btn"/>
+        </form>
+      </nav>
+      <div class="products">
+        <% for (let p of products) { %>
+        <form action="/cart" method="POST">
+          <div class="product-box">
+            <img
+              src="<%= p.imageUrl %>"
+              alt="<%= p.name %>"
+              class="product-img"
+            />
+            <h2><%= p.name %></h2>
+            <p>₩ <%= p.price %></p>
+            <input
+              type="hidden"
+              name="product"
+              value="<%= JSON.stringify(p) %>"
+            />
+            <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+            <a href="/shop/<%= p.id %>">View Details</a>
+          </div>
+        </form>
+        <% } %>
+      </div>
+    </main>
+  </body>
+</html>

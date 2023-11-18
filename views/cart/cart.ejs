@@ -7,7 +7,7 @@
     <%- include('../partials/navbar') %>
     <main>
       <div class="products">
-        <% for (let p of products) { %>
+        <% for (let c of carts) { %>
         <form method="POST" action="/cart/delete/<%= p.id %>">
           <input type="hidden" name="_method" value="DELETE" />
 
@@ -17,9 +17,9 @@
               alt="<%= p.name %>"
               class="product-img"
             />
-            <h2><%= p.name %></h2>
-            <p>₩ <%= p.price %></p>
-            <p>Quantity: <%= p.productQuantity %></p>
+            <h2><%= c.name %></h2>
+            <p>₩ <%= c.price %></p>
+            <p>Quantity: <%= c.productQuantity %></p>
             <button type="submit" class="add-to-cart-btn">
               Delete from Cart
             </button>

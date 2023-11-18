@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/shop.css" />
+  </head>
+  <body>
+    <%- include('../partials/navbar') %>
+    <main>
+      <h1>Add Product</h1>
+      <form action="/admin/add-product" method="POST">
+        <div class="form-control">
+          <label for="name">Name</label>
+          <input type="text" name="name" id="name" required />
+        </div>
+        <div class="form-control">
+          <label for="price">Price</label>
+          <input type="number" name="price" id="price" required />
+        </div>
+        <div class="form-control">
+          <label for="imageUrl">Image URL</label>
+          <input type="text" name="imageUrl" id="imageUrl" required />
+        </div>
+        <div class="form-control">
+          <label for="description">Description</label>
+          <textarea name="description" id="description" required></textarea>
+        </div>
+        <div class="form-control">
+          <label for="category">Category</label>
+          <select name="category" id="category" required>
+            <option value="1">Category 1</option>
+            <option value="2">Category 2</option>
+            <option value="3">Category 3</option>
+          </select>
+        </div>
+        <button type="submit" class="form-btn">Add Product</button>
+    </main>
+  </body>
+</html>

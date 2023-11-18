@@ -4,7 +4,7 @@ const Cart = require("../models/Cart");
 exports.getCartPage = async (req, res) => {
   const userId = req.params.userId;
 
-  const cart = await Cart.findOne({ where: { userId: userId } });
+  // const carts = await Cart.findOne({ where: { userId: userId } });
   if (!user) {
     return res.status(404).send("User not found");
   }
@@ -12,12 +12,13 @@ exports.getCartPage = async (req, res) => {
   return res.render("cart/cart", {
     pageTitle: "Cart Page",
     logoImg: "assets/jam-logo.png",
-    cart: cart,
+    carts: carts,
   });
 };
 
 exports.addCartItem = async (req, res) => {
   const { product } = req.body;
+  console.log(product);
   const productInJson = JSON.parse(product);
 
   if (
