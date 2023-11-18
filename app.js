@@ -2,16 +2,13 @@
 const express = require("express");
 const app = express();
 const path = require('path');
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 
 // view engine
 app.set("view engine", "ejs");
 app.set("views", "views");
-
-// database
-const sequelize = require('./models/index');
-// TODO: models
 
 // routes
 const mainRoute = require('./routes/MainRoute');
@@ -25,13 +22,16 @@ app.use('/shop', shopRoute);
 app.use('/cart', cartRoute);
 app.use('/admin', adminRoute);
 
+// database
+const sequelize = require('./models/index');
+// models relations
 const User = require('./models/User');
 const Product = require('./models/Product');
 const Cart = require('./models/Cart');
 
-User.hasMany(Product); // 1:N
-User.hasMany(Cart); // 1:N
-Product.hasMany(Cart); // 1:N
+// User.hasMany(Product); // 1:N
+// User.hasMany(Cart); // 1:N
+// Product.hasMany(Cart); // 1:N
 
 sequelize.sync({ force: false }) // force: true -> 테이블 재생성
   .then(() => {

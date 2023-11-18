@@ -75,7 +75,7 @@ exports.postSignUp = async (req, res, next) => {
       error: "password not matched",
     });
   } else {
-    await User.create({ username: username, password: password });
+    await User.create({ username: username, password: password, isAdmin: false });
     return res.render("auth/sign-in", {
       pageTitle: "SignIn Page",
       logoImg: "/assets/jam-logo.png",
