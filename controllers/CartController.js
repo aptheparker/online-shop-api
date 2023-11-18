@@ -11,7 +11,7 @@ exports.getCartPage = async (req, res) => {
   console.log(cart);
   return res.render("cart/cart", {
     pageTitle: "Cart Page",
-    logoImg: "assets/jam-logo.png",
+    logoImg: "/assets/jam-logo.png",
     carts: carts,
   });
 };

@@ -31,7 +31,7 @@ exports.getShopPage = (req, res, next) => {
       }
       return res.render("shop/shop", {
         pageTitle: "Shop Page",
-        logoImg: "assets/jam-logo.png",
+        logoImg: "/assets/jam-logo.png",
         products: products,
       });
     })

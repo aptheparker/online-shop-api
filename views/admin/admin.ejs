@@ -2,7 +2,7 @@
   <head>
     <title><%= pageTitle %></title>
     <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/shop.css" />
+    <link rel="stylesheet" href="/css/admin.css" />
   </head>
   <body>
     <%- include('../partials/navbar') %>
@@ -36,7 +36,8 @@
               name="product"
               value="<%= JSON.stringify(p) %>"
             />
-            <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+            <!-- <button type="submit" class="edit-btn">Edit</button>
+            <button type="submit" class="delete-btn">Delete</button> -->
             <a href="/shop/<%= p.id %>">View Details</a>
           </div>
         </form>
