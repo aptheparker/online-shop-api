@@ -25,6 +25,13 @@ app.use('/shop', shopRoute);
 app.use('/cart', cartRoute);
 app.use('/admin', adminRoute);
 
+const User = require('./models/User');
+const Product = require('./models/Product');
+const Cart = require('./models/Cart');
+
+User.hasMany(Product); // 1:N
+User.hasMany(Cart); // 1:N
+Product.hasMany(Cart); // 1:N
 
 sequelize.sync({ force: false }) // force: true -> 테이블 재생성
   .then(() => {

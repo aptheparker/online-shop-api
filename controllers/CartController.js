@@ -12,6 +12,8 @@ exports.addCartItem = async (req, res) => {
   const { product } = req.body;
   const productInJson = JSON.parse(product);
 
+  console.log(productInJson);
+
   if (
     productInJson &&
     products.find((product) => product.id === productInJson.id)
@@ -42,7 +44,7 @@ exports.deleteCartItem = async (req, res) => {
 
   if (productId) {
     const index = products.findIndex((product) => product.id === productId);
-    
+
     if (index !== -1) {
       products.splice(index, 1);
       res.redirect("/cart");
