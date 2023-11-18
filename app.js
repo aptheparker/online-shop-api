@@ -18,10 +18,12 @@ const mainRoute = require('./routes/MainRoute');
 const authRoute = require('./routes/AuthRoute');
 const shopRoute = require('./routes/ShopRoute');
 const cartRoute = require('./routes/CartRoute');
+const adminRoute = require('./routes/AdminRoute');
 app.use('/', mainRoute);
 app.use('/auth', authRoute);
 app.use('/shop', shopRoute);
 app.use('/cart', cartRoute);
+app.use('/admin', adminRoute);
 
 
 sequelize.sync({ force: false }) // force: true -> 테이블 재생성

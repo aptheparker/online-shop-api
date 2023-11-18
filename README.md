@@ -1,8 +1,10 @@
 # Online Shop API
+
 ## Tech Stack
 - Backend
-  - Node.js
+  - Node.js (Express.js)
+  - ORM: Sequelize
 - Database
-  - Mysql (Sequelize)
+  - Mysql
 - Template Engine
   - ejs

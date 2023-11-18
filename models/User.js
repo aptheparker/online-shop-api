@@ -16,12 +16,16 @@ const User = sequelize.define("User", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  
+  isAdmin:{
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
+  }
 });
 
 sequelize.sync({ force: false })
   .then(() => {
-    console.log("User 테이블 생성 성공");
+    console.log("User 테이블 연결 성공");
   })
   .catch((err) => {
     console.error(err);
