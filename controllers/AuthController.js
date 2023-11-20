@@ -35,6 +35,8 @@ exports.postSignIn = async (req, res) => {
       error: "password not matched",
     });
   } else {
+    req.session.username = username;
+    req.session.isAdmin = usernameExist.isAdmin;
     return res.render("main", {
       pageTitle: "Main Page",
       logoImg: "/assets/jam-logo.png",
