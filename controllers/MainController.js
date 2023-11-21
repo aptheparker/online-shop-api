@@ -1,7 +1,6 @@
 exports.getMainPage = (req, res) => {
 
   const username = req.session.username;
-  const isAdmin = req.session.isAdmin;
 
   if (!username) {
     return res.render("auth/sign-in", {

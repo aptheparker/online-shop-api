@@ -11,7 +11,7 @@ exports.getSignIn = (req, res, next) => {
 exports.postSignIn = async (req, res) => {
   const { username, password } = req.body;
 
-  const usernameExist = await User.findOne({
+  const user = await User.findOne({
     where: { username: username },
   });
 
@@ -22,13 +22,13 @@ exports.postSignIn = async (req, res) => {
       logoImg: "/assets/jam-logo.png",
       error: "username or password is empty",
     });
-  } else if (!usernameExist) {
+  } else if (!user) {
     return res.render("auth/sign-in", {
       pageTitle: "SignIn Page",
       logoImg: "/assets/jam-logo.png",
       error: "username not found",
     });
-  } else if (usernameExist.password !== password) {
+  } else if (user.password !== password) {
     return res.render("auth/sign-in", {
       pageTitle: "SignIn Page",
       logoImg: "/assets/jam-logo.png",
@@ -36,7 +36,8 @@ exports.postSignIn = async (req, res) => {
     });
   } else {
     req.session.username = username;
-    req.session.isAdmin = usernameExist.isAdmin;
+    req.session.isAdmin = user.isAdmin;
+    req.session.userId = user.id;
     return res.render("main", {
       pageTitle: "Main Page",
       logoImg: "/assets/jam-logo.png",
