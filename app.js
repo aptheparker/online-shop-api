@@ -2,8 +2,7 @@
 const express = require("express");
 const app = express();
 const path = require('path');
-// TODO: cookie, session
-const cookieParser = require('cookie-parser');
+
 const session = require('express-session');
 app.use(session({
   secret: 'secret key',
