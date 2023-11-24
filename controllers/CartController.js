@@ -1,45 +1,56 @@
 const products = [];
 const Cart = require("../models/Cart");
+const Product = require("../models/Product");
 
 exports.getCartPage = async (req, res) => {
-  const userId = req.params.userId;
+  const userId = req.session.userId;
+  const carts = await Cart.findAll({ where: { userId: userId } });
 
-  // const carts = await Cart.findOne({ where: { userId: userId } });
-  if (!user) {
+  const cartProducts = [];
+  for (let i = 0; i < carts.length; i++) {
+    const cart = carts[i];
+    const product = await Product.findByPk(cart.productId);
+    cartProducts.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      quantity: cart.quantity,
+      imageUrl: product.imageUrl,
+    });
+  }
+
+  if (!userId) {
     return res.status(404).send("User not found");
   }
-  console.log(cart);
   return res.render("cart/cart", {
     pageTitle: "Cart Page",
     logoImg: "/assets/jam-logo.png",
-    carts: carts,
+    carts: cartProducts,
+    isAdmin: req.session.isAdmin,
   });
 };
 
 exports.addCartItem = async (req, res) => {
   const { product } = req.body;
-  console.log(product);
   const productInJson = JSON.parse(product);
 
-  if (
-    productInJson &&
-    products.find((product) => product.id === productInJson.id)
-  ) {
-    // If product already exists in cart, increment quantity
-    const index = products.findIndex(
-      (product) => product.id === productInJson.id
-    );
-    products[index].productQuantity++;
-    res.redirect("/cart");
-  } else if (productInJson) {
-    // If product does not exist in cart, add it
-    productInJson.productQuantity = 1;
-    products.push({ ...productInJson, productQuantity: 1 });
-    res.redirect("/cart");
+  const userId = req.session.userId;
+
+  const cart = await Cart.findOne({
+    where: { userId: userId, productId: productInJson.id },
+  });
+
+  if (cart) {
+    cart.quantity += 1;
+    await cart.save();
   } else {
-    // If product does not exist in request body, send error
-    res.status(400).send("Bad Request: Missing product data");
+    await Cart.create({
+      userId: userId,
+      productId: productInJson.id,
+      quantity: 1,
+    });
   }
+  res.redirect("/cart");
 };
 
 exports.updateCartItem = async (req, res) => {
@@ -49,14 +60,21 @@ exports.updateCartItem = async (req, res) => {
 exports.deleteCartItem = async (req, res) => {
   const productId = parseInt(req.params.id);
 
-  if (productId) {
-    const index = products.findIndex((product) => product.id === productId);
+  const userId = req.session.userId;
 
-    if (index !== -1) {
-      products.splice(index, 1);
-      res.redirect("/cart");
-    } else {
-      res.status(404).send("Product not found");
-    }
+  console.log(userId, productId);
+
+  const cart = await Cart.findOne({
+    where: { userId: userId, productId: productId },
+  });
+
+  console.log(cart);
+
+  if (cart) {
+    await await cart.destroy();
+  } else {
+    return res.status(404).send("Cart not found");
   }
+
+  res.redirect("/cart");
 };

@@ -6,6 +6,8 @@ const path = require('path');
 const session = require('express-session');
 app.use(session({
   secret: 'secret key',
+  resave: false,
+  saveUninitialized: true,
 }));
 
 // TODO: auth, session, cookie
@@ -31,7 +33,6 @@ app.use('/admin', adminRoute);
 
 // database
 const sequelize = require('./models/index');
-// models relations
 // const User = require('./models/User');
 // const Product = require('./models/Product');
 // const Cart = require('./models/Cart');

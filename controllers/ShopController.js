@@ -33,6 +33,7 @@ exports.getShopPage = (req, res, next) => {
         pageTitle: "Shop Page",
         logoImg: "/assets/jam-logo.png",
         products: products,
+        isAdmin: req.session.isAdmin,
       });
     })
     .catch((err) => {
@@ -49,6 +50,7 @@ exports.getShopItem = (req, res, next) => {
       return res.render("shop/shop-detail", {
         pageTitle: "Shop Detail",
         product: product,
+        isAdmin: req.session.isAdmin,
       });
     })
     .catch((err) => {

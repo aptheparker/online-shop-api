@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="css/shop.css" />
   </head>
   <body>
-    <%- include('../partials/navbar') %>
+    <%- include('../partials/navbar', { isAdmin }) %>
     <main>
       <nav class="category-navbar">
         <ul>
@@ -16,7 +16,7 @@
         </ul>
         <form class="search-form" method="get">
           Search: <input type="text" name="q" class="search-bar" />
-          <input type="submit" value="Search" class="form-btn"/>
+          <input type="submit" value="Search" class="form-btn" />
         </form>
       </nav>
       <div class="products">
@@ -35,7 +35,7 @@
               name="product"
               value="<%= JSON.stringify(p) %>"
             />
-            <!-- <button type="submit" class="add-to-cart-btn">Add to Cart</button> -->
+            <button type="submit" class="add-to-cart-btn">Add to Cart</button>
             <a href="/shop/<%= p.id %>">View Details</a>
           </div>
         </form>

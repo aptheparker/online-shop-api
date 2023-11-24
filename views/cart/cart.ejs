@@ -4,26 +4,26 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
-    <%- include('../partials/navbar') %>
+    <%- include('../partials/navbar', { isAdmin }) %>
     <main>
       <div class="products">
         <% for (let c of carts) { %>
-        <form method="POST" action="/cart/delete/<%= p.id %>">
+        <form method="POST" action="/cart/delete/<%= c.id %>">
           <input type="hidden" name="_method" value="DELETE" />
 
           <div class="product-box">
             <img
-              src="<%= p.imageUrl %>"
-              alt="<%= p.name %>"
+              src="<%= c.imageUrl %>"
+              alt="<%= c.name %>"
               class="product-img"
             />
             <h2><%= c.name %></h2>
             <p>₩ <%= c.price %></p>
-            <p>Quantity: <%= c.productQuantity %></p>
+            <p>Quantity: <%= c.quantity %></p>
             <button type="submit" class="add-to-cart-btn">
               Delete from Cart
             </button>
-            <a href="/shop/<%= p.id %>">View Details</a>
+            <a href="/shop/<%= c.id %>">View Details</a>
           </div>
         </form>
         <% } %>

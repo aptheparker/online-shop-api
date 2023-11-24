@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/css/shop.css" />
   </head>
   <body>
-    <%- include('../partials/navbar') %>
+    <%- include('../partials/navbar', { isAdmin }) %>
     <main>
       <h1>Add Product</h1>
       <form action="/admin/add-product" method="POST">

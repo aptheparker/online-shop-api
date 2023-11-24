@@ -6,6 +6,7 @@ exports.getAdminPage = (req, res) => {
       pageTitle: "Admin Page",
       logoImg: "/assets/jam-logo.png",
       products: products,
+      isAdmin: req.session.isAdmin,
     });
   });
 };
@@ -15,6 +16,7 @@ exports.getAddProductPage = (req, res) => {
     pageTitle: "Add Product Page",
     logoImg: "/assets/jam-logo.png",
     userName: "",
+    isAdmin: req.session.isAdmin,
   });
 };
 

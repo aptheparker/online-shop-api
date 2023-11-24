@@ -3,8 +3,10 @@
   <ul>
     <li><a href="/">Home</a></li>
     <li><a href="/shop">Shop</a></li>
-    <!-- <li><a href="/cart">Cart</a></li> -->
+    <li><a href="/cart">Cart</a></li>
+    <% if (isAdmin) { %>
     <li><a href="/admin">Admin</a></li>
+    <% } %>
     <li><a href="/auth/sign-in">Login</a></li>
   </ul>
 </nav>
