@@ -2,13 +2,11 @@ const User = require("../models/User");
 
 exports.getSignIn = (req, res, next) => {
 
-  const isAdmin = req.session.isAdmin;
-
   res.render("auth/sign-in", {
     pageTitle: "SignIn Page",
     logoImg: "/assets/jam-logo.png",
     error: "",
-    isAdmin: isAdmin,
+    isAdmin: req.session.isAdmin,
   });
 };
 
