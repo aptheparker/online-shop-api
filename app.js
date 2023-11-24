@@ -4,13 +4,32 @@ const app = express();
 const path = require('path');
 
 const session = require('express-session');
+const MySQLStore = require('express-mysql-session')(session);
+const { username, password, database, host } = require('./config/config.json')['development'];
+
+const sessionStore = new MySQLStore({
+  host: host,
+  port: 3306,
+  user: username,
+  password: password,
+  database: database,
+});
+
 app.use(session({
+  key: 'session_cookie_name',
   secret: 'secret key',
   resave: false,
   saveUninitialized: true,
+  store: sessionStore,
 }));
 
-// TODO: auth, session, cookie
+sessionStore.onReady().then(() => {
+	// MySQL session store ready for use.
+	console.log('MySQLStore 준비 완료');
+}).catch(error => {
+	// Something went wrong.
+	console.error(error);
+});
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));

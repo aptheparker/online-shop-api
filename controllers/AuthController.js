@@ -24,21 +24,21 @@ exports.postSignIn = async (req, res) => {
       pageTitle: "SignIn Page",
       logoImg: "/assets/jam-logo.png",
       error: "username or password is empty",
-      isAdmin: isAdmin,
+      isAdmin: req.session.isAdmin,
     });
   } else if (!user) {
     return res.render("auth/sign-in", {
       pageTitle: "SignIn Page",
       logoImg: "/assets/jam-logo.png",
       error: "username not found",
-      isAdmin: isAdmin,s
+      isAdmin: req.session.isAdmin,
     });
   } else if (user.password !== password) {
     return res.render("auth/sign-in", {
       pageTitle: "SignIn Page",
       logoImg: "/assets/jam-logo.png",
       error: "password not matched",
-      isAdmin: isAdmin,
+      isAdmin: req.session.isAdmin,
     });
   } else {
     req.session.username = username;
@@ -60,7 +60,7 @@ exports.getSignUp = (req, res, next) => {
     pageTitle: "SignUp Page",
     logoImg: "/assets/jam-logo.png",
     error: "",
-    isAdmin: isAdmin,
+    isAdmin: req.session.isAdmin,
   });
 };
 
@@ -74,21 +74,21 @@ exports.postSignUp = async (req, res, next) => {
       pageTitle: "SignUp Page",
       logoImg: "/assets/jam-logo.png",
       error: "username or password is empty",
-      isAdmin: isAdmin,
+      isAdmin: req.session.isAdmin,
     });
   } else if (usernameExist) {
     return res.render("auth/sign-up", {
       pageTitle: "SignUp Page",
       logoImg: "/assets/jam-logo.png",
       error: "username already exist",
-      isAdmin: isAdmin,
+      isAdmin: req.session.isAdmin,
     });
   } else if (password !== passwordConfirm) {
     return res.render("auth/sign-up", {
       pageTitle: "SignUp Page",
       logoImg: "/assets/jam-logo.png",
       error: "password not matched",
-      isAdmin: isAdmin,
+      isAdmin: req.session.isAdmin,
     });
   } else {
     await User.create({ username: username, password: password, isAdmin: false });
@@ -96,7 +96,7 @@ exports.postSignUp = async (req, res, next) => {
       pageTitle: "SignIn Page",
       logoImg: "/assets/jam-logo.png",
       error: "",
-      isAdmin: isAdmin,
+      isAdmin: req.session.isAdmin,
     });
   }
 };
